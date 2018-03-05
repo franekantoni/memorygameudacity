@@ -1,14 +1,8 @@
-/*
- * Create a list that holds all of your cards
- */
+// Create a list that holds all of your cards
+ 
 cards= ["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11","c12","c13","c14","c15","c16"]
 imgs = ["fa-diamond", "fa-paper-plane-o", "fa-anchor","fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -25,6 +19,7 @@ function shuffle(array) {
     return array;
 }
 
+//takes list of card ids, suffles them and alocates random card icons to them
 function display(cards){
 	console.log("shuffled");
 	cards = shuffle(cards);
@@ -35,6 +30,7 @@ function display(cards){
 	}
 }
 
+//takes an array of size 2 of cards and untoggeles the 'match' class, afet that checks if the game is won
 function match(array){
 	for (let i = 0; i < 2; i ++){
 	    array[i].classList.toggle("match");
@@ -44,6 +40,7 @@ function match(array){
 	
 }
 
+//checks if the game is won, displays end game alert
 function won(){
 	if (score === 8){
 		if (confirm("star rating: "+"* ".repeat(stars)+`You won in ${cnt} moves!, play again?`)){
@@ -51,6 +48,7 @@ function won(){
 		}
 }}
 
+//takes an array of 2 cards, runs animation andhides the icons of cards
 function hide(array){
 
 	for (let i = 0; i < 2; i ++){
@@ -63,7 +61,7 @@ function hide(array){
     }
 }
 
-
+//ncreases the move count and sets the star rating
 function increase_cnt(){
 	cnt = Number(document.getElementById("cnt").textContent);
 	cnt +=1;
@@ -79,7 +77,7 @@ function increase_cnt(){
 }
 
 
-
+//showes the clicked card and checks if two cards are of the same type
 function clicked(e){
 	increase_cnt();
     e.target.classList.toggle('open');
@@ -101,8 +99,8 @@ function clicked(e){
 }
 
 
+//***********************************************************************
 
-//LOGIC//
 
 display(cards);
 let stars = 3;
@@ -111,24 +109,17 @@ let card = "";
 let open = [];
 score = 0;
 
+//set a click event at each card
+
 for (let i = 0; i< cards.length; i++){
 document.getElementsByClassName("card")[i].addEventListener("click", function(e){
 	clicked(e);
   })}
 
+//resteart the game if the button is clicked
 document.getElementsByClassName("restart")[0].addEventListener("click", function(){
 	location.reload()
 })
 
 //END///
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */

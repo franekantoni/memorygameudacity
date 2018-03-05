@@ -1,20 +1,18 @@
 # Memory Game Project
 
-## Table of Contents
+This is my project for udacity nanodegree. Is is a program simulation of popular guessing game.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+program consists of 4 files:
+1. index.html
+2. app.css
+3. app.js
+4. geometry2.png
 
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+in app.js you can find following functions:
+1. shuffle(array) from http://stackoverflow.com/a/2450976
+2. display(cards) - takes list of card ids, suffles them and alocates random card icons to them
+3. match(array) - takes an array of size 2 of cards and untoggeles the 'match' class, afet that checks if the game is won
+4. won( )- checks if the game is won, displays end game alert
+5. hide(array) - takes an array of 2 cards, runs animation andhides the icons of cards
+6. increase_cnt( ) - increases the move count and sets the star rating
+7. clicked( ) - showes the clicked card and checks if two cards are of the same type
