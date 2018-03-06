@@ -27,6 +27,9 @@ body {
     align-items: center;
     flex-direction: column;
 }
+.clock{
+    text-align: center
+}
 
 h1 {
     font-family: 'Open Sans', sans-serif;
@@ -108,7 +111,9 @@ h1 {
     cursor: pointer;
 }
 
-
+.disabled { 
+    pointer-events: none; 
+}
 
 
 .shake {

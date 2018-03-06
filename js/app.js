@@ -43,7 +43,7 @@ function match(array){
 //checks if the game is won, displays end game alert
 function won(){
 	if (score === 8){
-		if (confirm("star rating: "+"* ".repeat(stars)+`You won in ${cnt} moves!, play again?`)){
+		if (confirm(`star rating: {"* ".repeat(stars)} You won in ${cnt} moves and it took ${time} seconds\n play again?`)){
 			location.reload()
 		}
 }}
@@ -53,6 +53,7 @@ function hide(array){
 
 	for (let i = 0; i < 2; i ++){
 		array[i].classList.toggle("shake");
+		array[i].classList.toggle("disabled");
 		array[i].style.backgroundColor = 'red';
 		setTimeout(function() { array[i].classList.toggle("open"); }, 800);
     	setTimeout(function() { array[i].classList.toggle("show"); }, 800);
@@ -61,8 +62,13 @@ function hide(array){
     }
 }
 
-//ncreases the move count and sets the star rating
+//Increases the move count and sets the star rating, starts the clock
 function increase_cnt(){
+	if (cnt === 0){
+		start = Date.now();
+		update_clock();
+	}
+
 	cnt = Number(document.getElementById("cnt").textContent);
 	cnt +=1;
 	document.getElementById("cnt").textContent = cnt;
@@ -80,8 +86,10 @@ function increase_cnt(){
 //showes the clicked card and checks if two cards are of the same type
 function clicked(e){
 	increase_cnt();
+	time = (Date.now() - start )/1000
     e.target.classList.toggle('open');
     e.target.classList.toggle('show');
+    e.target.classList.toggle("disabled");
     card = e.target;
     open.push(card);
 
@@ -98,6 +106,12 @@ function clicked(e){
     }
 }
 
+//updates the content of clock element
+function update_clock(){
+	document.getElementById("clock").textContent = (Date.now() - start )/1000;
+	setTimeout(update_clock, 100);
+}
+
 
 //***********************************************************************
 
@@ -107,7 +121,10 @@ let stars = 3;
 console.log("*"*stars)
 let card = "";
 let open = [];
+let start = 0;
+let time = 0;
 score = 0;
+let cnt = Number(document.getElementById("cnt").textContent);
 
 //set a click event at each card
 
@@ -120,6 +137,5 @@ document.getElementsByClassName("card")[i].addEventListener("click", function(e)
 document.getElementsByClassName("restart")[0].addEventListener("click", function(){
 	location.reload()
 })
-
 //END///
 
