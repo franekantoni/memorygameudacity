@@ -1,7 +1,7 @@
 // Create a list that holds all of your cards
  
-cards= ["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11","c12","c13","c14","c15","c16"]
-imgs = ["fa-diamond", "fa-paper-plane-o", "fa-anchor","fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+const cards= ["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11","c12","c13","c14","c15","c16"]
+const mgs = ["fa-diamond", "fa-paper-plane-o", "fa-anchor","fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -42,7 +42,7 @@ function match(array){
 
 //checks if the game is won, displays end game alert
 function won(){
-	if (score === 1){
+	if (score === 8){
 		const starRating = "* ".repeat(stars)
 		if (confirm(`star rating: ${starRating} You won in ${cnt} moves and it took you ${time} seconds\n play again?`)){
 			location.reload()
