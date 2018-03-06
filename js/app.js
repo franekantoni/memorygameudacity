@@ -42,8 +42,9 @@ function match(array){
 
 //checks if the game is won, displays end game alert
 function won(){
-	if (score === 8){
-		if (confirm(`star rating: {"* ".repeat(stars)} You won in ${cnt} moves and it took ${time} seconds\n play again?`)){
+	if (score === 1){
+		const starRating = "* ".repeat(stars)
+		if (confirm(`star rating: ${starRating} You won in ${cnt} moves and it took you ${time} seconds\n play again?`)){
 			location.reload()
 		}
 }}
